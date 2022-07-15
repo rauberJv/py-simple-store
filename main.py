@@ -8,15 +8,23 @@ class main():
 
         mainMenuOption = 0
 
-        while mainMenuOption != 3:
+        while mainMenuOption != 4:
             mainMenuOption = self.viewObject.MainMenu()
 
             if mainMenuOption == 1:
                 itemMenuOption = 0
+                
                 while itemMenuOption != 4:
                     itemMenuOption = self.viewObject.ItemsMenu()
+                    
                     if itemMenuOption == 1:
-                        itemMenuOption = self.viewObject.insertItemForm()
+                        self.viewObject.listItems()
+                    
+                    if itemMenuOption == 2:
+                        itemMenuOption = self.viewObject.insertItemForm()    
+                    
+                    if itemMenuOption == 3:
+                        self.viewObject.deleteItemForm()
 
             if mainMenuOption == 2:
                 saleMenuOption = 0

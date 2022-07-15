@@ -8,6 +8,7 @@ class Database():
 
     def createConnection(self):
         self.connection = sqlite3.connect(self.db_name)
+        return self.connection
 
     def closeConnection(self):
         self.connection.close()

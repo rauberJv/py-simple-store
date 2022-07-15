@@ -26,7 +26,8 @@ class View():
         print(self.SELECT_OPTION_MESSAGE)
         print('[1] -- Items Menu')
         print('[2] -- Sale Menu')
-        print('[3] -- Exit Program ')
+        print('[3] -- Customer Menu')
+        print('[4] -- Exit Program ')
         return int(input("Your option: "))
 
     def ItemsMenu(self):
@@ -46,6 +47,7 @@ class View():
         return int(input("Your option: "))
 
     def insertItemForm(self):
+        item_controller = ItemController()
         name = input("Name: ")
         description = input("Description: ")
         price = input("Price: ")
@@ -55,6 +57,28 @@ class View():
         update_date = datetime.now().strftime('%Y-%m-%d')
         new_item = Item(0, name, description, price, quantity,
                         active, register_date, update_date)
-        item_controller = ItemController()
         item_controller.insert(new_item)
         return 4
+
+    def listItems(self): 
+        item_controller = ItemController()
+        itemList = item_controller.listAll()
+        print("----Item List----")
+        for item in itemList:
+            print("ID = " + str(item.id))
+            print("NAME = " + item.name)
+            print("DESCRIPTION = " + item.description)
+            print("PRICE = $" + str(item.price))
+            print("QUANTITY = " + str(item.quantity))
+            print('\n')
+    
+    def deleteItemForm(self):
+        item_controller = ItemController()
+        id = input("Item ID: ")
+        item = item_controller.findById(id)
+        if item:
+            confirm = input("Do you want to remove " + item.name + "? [Y/N]")
+            if confirm:
+                print(item_controller.delete(id))
+        else:
+            print("\nItem with ID " + str(id) + " was not found")
