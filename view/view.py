@@ -33,9 +33,10 @@ class View():
     def ItemsMenu(self):
         print(self.SELECT_OPTION_MESSAGE)
         print('[1] -- List Items')
-        print('[2] -- Create Item')
-        print('[3] -- Delete Item')
-        print('[4] -- Return to Main Menu')
+        print('[2] -- Find by Id')
+        print('[3] -- Create Item')
+        print('[4] -- Delete Item')
+        print('[5] -- Return to Main Menu')
         return int(input("Your option: "))
 
     def SalesMenu(self):
@@ -45,6 +46,14 @@ class View():
         print('[3] -- Sales Report')
         print('[4] -- Return to Main Menu')
         return int(input("Your option: "))
+
+    def CustomerMenu(self):
+        print(self.SELECT_OPTION_MESSAGE)
+        print('[1] -- List Customers')
+        print('[2] -- New Customer')
+        print('[3] -- Delete Customer')
+        print('[4] -- Return to Main Menu')
+        return int(input("Your optionn: "))
 
     def insertItemForm(self):
         item_controller = ItemController()
@@ -60,7 +69,7 @@ class View():
         item_controller.insert(new_item)
         return 4
 
-    def listItems(self): 
+    def listItems(self):
         item_controller = ItemController()
         itemList = item_controller.listAll()
         print("----Item List----")
@@ -71,7 +80,7 @@ class View():
             print("PRICE = $" + str(item.price))
             print("QUANTITY = " + str(item.quantity))
             print('\n')
-    
+
     def deleteItemForm(self):
         item_controller = ItemController()
         id = input("Item ID: ")

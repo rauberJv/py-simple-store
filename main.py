@@ -13,17 +13,20 @@ class main():
 
             if mainMenuOption == 1:
                 itemMenuOption = 0
-                
-                while itemMenuOption != 4:
+
+                while itemMenuOption != 5:
                     itemMenuOption = self.viewObject.ItemsMenu()
-                    
+
                     if itemMenuOption == 1:
                         self.viewObject.listItems()
                     
                     if itemMenuOption == 2:
-                        itemMenuOption = self.viewObject.insertItemForm()    
-                    
+                        self.viewObject.listItems()
+
                     if itemMenuOption == 3:
+                        itemMenuOption = self.viewObject.insertItemForm()
+
+                    if itemMenuOption == 4:
                         self.viewObject.deleteItemForm()
 
             if mainMenuOption == 2:
@@ -32,6 +35,11 @@ class main():
                     saleMenuOption = self.viewObject.SalesMenu()
 
             if mainMenuOption == 3:
+                customerMenuOption = 0
+                while customerMenuOption != 4:
+                    customerMenuOption = self.viewObject.CustomerMenu()
+
+            if mainMenuOption == 4:
                 self.viewObject.goodbyeMessage()
 
 
