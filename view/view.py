@@ -1,7 +1,10 @@
+from argparse import _ActionStr
 from atexit import register
 from datetime import datetime
+from model.customer import Customer
 from model.item import Item
 from controller.item_controller import ItemController
+from controller.customer_controller import CustomerController
 
 
 class View():
@@ -25,8 +28,8 @@ class View():
     def MainMenu(self):
         print(self.SELECT_OPTION_MESSAGE)
         print('[1] -- Items Menu')
-        print('[2] -- Sale Menu')
-        print('[3] -- Customer Menu')
+        print('[2] -- Customer Menu')
+        print('[3] -- Sale Menu')
         print('[4] -- Exit Program ')
         return int(input("Your option: "))
 
@@ -38,22 +41,6 @@ class View():
         print('[4] -- Delete Item')
         print('[5] -- Return to Main Menu')
         return int(input("Your option: "))
-
-    def SalesMenu(self):
-        print(self.SELECT_OPTION_MESSAGE)
-        print('[1] -- List Sales')
-        print('[2] -- New Sale')
-        print('[3] -- Sales Report')
-        print('[4] -- Return to Main Menu')
-        return int(input("Your option: "))
-
-    def CustomerMenu(self):
-        print(self.SELECT_OPTION_MESSAGE)
-        print('[1] -- List Customers')
-        print('[2] -- New Customer')
-        print('[3] -- Delete Customer')
-        print('[4] -- Return to Main Menu')
-        return int(input("Your optionn: "))
 
     def insertItemForm(self):
         item_controller = ItemController()
@@ -91,3 +78,36 @@ class View():
                 print(item_controller.delete(id))
         else:
             print("\nItem with ID " + str(id) + " was not found")
+
+    def CustomerMenu(self):
+        print(self.SELECT_OPTION_MESSAGE)
+        print('[1] -- List Customers')
+        print('[2] -- New Customer')
+        print('[3] -- Delete Customer')
+        print('[4] -- Return to Main Menu')
+        return int(input("Your optionn: "))
+
+    def insertCustomerForm(self): 
+        customer_controller = CustomerController()
+        
+        name = input("Name: ")
+        document = input("Document: ")
+        active = 1
+        register_date = datetime.now().strftime('%Y-%m-%d')
+        update_date = datetime.now().strftime('%Y-%m-%d')
+        
+        customer = Customer(0, name, document, active, register_date, update_date)
+        
+        actionResponse = customer_controller.insert(customer)
+        print(actionResponse)
+
+
+    def SalesMenu(self):
+        print(self.SELECT_OPTION_MESSAGE)
+        print('[1] -- List Sales')
+        print('[2] -- New Sale')
+        print('[3] -- Sales Report')
+        print('[4] -- Return to Main Menu')
+        return int(input("Your option: "))
+
+

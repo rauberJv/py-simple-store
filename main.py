@@ -30,14 +30,18 @@ class main():
                         self.viewObject.deleteItemForm()
 
             if mainMenuOption == 2:
+                customerMenuOption = 0
+                while customerMenuOption != 4:
+                    customerMenuOption = self.viewObject.CustomerMenu()
+
+                    if customerMenuOption == 2:
+                        self.viewObject.insertCustomerForm()
+            
+            if mainMenuOption == 3:
                 saleMenuOption = 0
                 while saleMenuOption != 4:
                     saleMenuOption = self.viewObject.SalesMenu()
 
-            if mainMenuOption == 3:
-                customerMenuOption = 0
-                while customerMenuOption != 4:
-                    customerMenuOption = self.viewObject.CustomerMenu()
 
             if mainMenuOption == 4:
                 self.viewObject.goodbyeMessage()

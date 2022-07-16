@@ -2,12 +2,10 @@ import sqlite3
 
 
 class Database():
-
-    def __init__(self, db_name):
-        self.db_name = db_name
+    DATABASE_NAME = 'py-simple-store.db'        
 
     def createConnection(self):
-        self.connection = sqlite3.connect(self.db_name)
+        self.connection = sqlite3.connect(self.DATABASE_NAME)
         return self.connection
 
     def closeConnection(self):

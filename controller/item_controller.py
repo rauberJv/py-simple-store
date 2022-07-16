@@ -5,10 +5,10 @@ from model.item import Item
 
 class ItemController():
 
-    DATABASE_NAME = 'py-simple-store.db'
+    
 
     def __init__(self):
-        self.db_connection = Database(self.DATABASE_NAME).createConnection()
+        self.db_connection = Database().createConnection()
 
     def insert(self, item: Item):
         db_cursor = self.db_connection.cursor()
@@ -24,7 +24,6 @@ class ItemController():
                            "price": item.price, "quantity": item.quantity,
                            "active": item.active, "register_date": item.register_date,
                            "update_date": item.update_date})
-        print(db_cursor.lastrowid)
         self.db_connection.commit()
         db_cursor.close()
     
