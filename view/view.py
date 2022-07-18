@@ -1,5 +1,3 @@
-from argparse import _ActionStr
-from atexit import register
 from datetime import datetime
 from model.customer import Customer
 from model.item import Item
@@ -100,6 +98,14 @@ class View():
         
         actionResponse = customer_controller.insert(customer)
         print(actionResponse)
+    
+    def listCustomers(self):
+        customer_controller = CustomerController()
+        customerList = customer_controller.listAll()
+        for customer in customerList:
+            print('----['+ str(customer.id) +']----')
+            print("NAME = " + customer.name)
+            print("DOCUMENT = " + customer.document)            
 
 
     def SalesMenu(self):

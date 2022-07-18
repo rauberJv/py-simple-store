@@ -34,6 +34,9 @@ class main():
                 while customerMenuOption != 4:
                     customerMenuOption = self.viewObject.CustomerMenu()
 
+                    if customerMenuOption == 1:
+                        self.viewObject.listCustomers()
+
                     if customerMenuOption == 2:
                         self.viewObject.insertCustomerForm()
             

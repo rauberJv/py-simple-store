@@ -10,8 +10,11 @@ class CustomerController():
         db_cursor = self.db_connection.cursor()
         db_cursor.execute('SELECT * FROM CUSTOMER WHERE ACTIVE = 1')
         list = db_cursor.fetchall()
-        print(list)
+        customerList = []
+        for customer in list:
+            customerList.append(Customer(customer[0], customer[1], customer[2], customer[3], customer[4], customer[5]))
         db_cursor.close()
+        return customerList
 
     def insert(self, customer: Customer):
         actionResponse = ""
