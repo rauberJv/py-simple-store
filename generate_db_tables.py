@@ -4,7 +4,7 @@ from controller.database import Database
 DATABASE_NAME = 'py-simple-store.db'
 
 def generateItemsTable():
-    database = Database(DATABASE_NAME)
+    database = Database()
     database.createConnection()
     database_cursor = database.getCursor()
     database_cursor.execute("CREATE TABLE IF NOT EXISTS ITEMS( "
@@ -29,6 +29,7 @@ def generateItemsTable():
                             + "ID INTEGER PRIMARY KEY,"
                             + "ITEM_ID INTEGER NOT NULL,"
                             + "CUSTOMER_ID INTEGER NOT NULL,"
+                            + "QUANTITY INTEGER NOT NULL,"
                             + "REGISTER_DATE TEXT NOT NULL,"
                             + "UPDATE_DATE TEXT NOT NULL,"
                             + "FOREIGN KEY (ITEM_ID) REFERENCES ITEM(ID),"

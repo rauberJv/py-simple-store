@@ -39,11 +39,20 @@ class main():
 
                     if customerMenuOption == 2:
                         self.viewObject.insertCustomerForm()
+                    
+                    if customerMenuOption == 3:
+                        self.viewObject.deleteCustomerForm()
             
             if mainMenuOption == 3:
                 saleMenuOption = 0
                 while saleMenuOption != 4:
                     saleMenuOption = self.viewObject.SalesMenu()
+
+                    if saleMenuOption == 1:
+                        self.viewObject.listSales()
+
+                    if saleMenuOption == 2:
+                        self.viewObject.insertSaleForm()
 
 
             if mainMenuOption == 4:
