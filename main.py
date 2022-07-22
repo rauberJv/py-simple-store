@@ -1,3 +1,6 @@
+from view.customer_view import CustomerView
+from view.item_view import ItemView
+from view.sale_view import SaleView
 from view.view import View
 
 
@@ -5,8 +8,13 @@ class main():
 
     def start(self):
         self.viewObject = View()
+        self.itemView = ItemView()
+        self.customerView = CustomerView()
+        self.saleView = SaleView()
 
         mainMenuOption = 0
+        
+        self.viewObject.welcomeMessage()
 
         while mainMenuOption != 4:
             mainMenuOption = self.viewObject.MainMenu()
@@ -15,44 +23,44 @@ class main():
                 itemMenuOption = 0
 
                 while itemMenuOption != 5:
-                    itemMenuOption = self.viewObject.ItemsMenu()
+                    itemMenuOption = self.itemView.ItemsMenu()
 
                     if itemMenuOption == 1:
-                        self.viewObject.listItems()
+                        self.itemView.listItems()
                     
                     if itemMenuOption == 2:
-                        self.viewObject.listItems()
+                        self.itemView.listItems()
 
                     if itemMenuOption == 3:
-                        itemMenuOption = self.viewObject.insertItemForm()
+                        self.itemView.insertItemForm()
 
                     if itemMenuOption == 4:
-                        self.viewObject.deleteItemForm()
+                        self.itemView.deleteItemForm()
 
             if mainMenuOption == 2:
                 customerMenuOption = 0
                 while customerMenuOption != 4:
-                    customerMenuOption = self.viewObject.CustomerMenu()
+                    customerMenuOption = self.customerView.CustomerMenu()
 
                     if customerMenuOption == 1:
-                        self.viewObject.listCustomers()
+                        self.customerView.listCustomers()
 
                     if customerMenuOption == 2:
-                        self.viewObject.insertCustomerForm()
+                        self.customerView.insertCustomerForm()
                     
                     if customerMenuOption == 3:
-                        self.viewObject.deleteCustomerForm()
+                        self.customerView.deleteCustomerForm()
             
             if mainMenuOption == 3:
                 saleMenuOption = 0
                 while saleMenuOption != 4:
-                    saleMenuOption = self.viewObject.SalesMenu()
+                    saleMenuOption = self.saleView.SalesMenu()
 
                     if saleMenuOption == 1:
-                        self.viewObject.listSales()
+                        self.saleView.listSales()
 
                     if saleMenuOption == 2:
-                        self.viewObject.insertSaleForm()
+                        self.saleView.insertSaleForm()
 
 
             if mainMenuOption == 4:
